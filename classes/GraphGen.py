@@ -36,7 +36,7 @@ class GraphGen():
         :param self: This.
         :param filename: Filename for file generated in the outputs/ folder.
         """   
-        file = open('output/' + filename + '.txt', 'w')
+        file = open('graphs/' + filename + '.txt', 'w')
         for n in self.nodes:
             if len(self.nodes[n].getStreets()) > 0:
                 file.write(self.nodes[n].getInfo())

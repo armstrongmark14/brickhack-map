@@ -13,5 +13,5 @@ gg.createGraph()
 # Putting the nodes in my format into outputs/mapFile.txt
 gg.outputNodes(mapFile)
 
-print('Your node file is now in outputs/%s.txt' % mapFile)
+print('Your node file is now in graphs/%s.txt' % mapFile)
 print('\nThank you for using my program.')

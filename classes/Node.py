@@ -9,6 +9,8 @@ Each node will have:
 
 """
 
+import re
+
 class Node():
     """The basic Node class for our map."""
 
@@ -34,6 +36,8 @@ class Node():
         :param nodeId: The ID # of the node adjacent to this.
         """   
         self.adjacent.append(nodeId)
+    
+    
 
     def addStreet(self, streetName):
         """Adds a street to this node.
@@ -42,6 +46,22 @@ class Node():
         :param streetName: The name of the street this node sits on. 
         """   
         self.streets.add(streetName)
+
+    def setAdjacent(self, nodeList):
+        """Setting the list of node ID #'s to the adjacent list.
+    
+        :param self: This.
+        :param nodeList: The list of nodes that we're setting as this nodes adjacent.
+        """   
+        self.adjacent = nodeList
+
+    def setStreets(self, streets):
+        """Setting a list of streets to be this nodes list of streets.
+        
+            :param self: This. 
+            :param streets: List of streets that we're setting as this nodes streets.
+        """   
+        self.streets = streets
 
     def setParent(self, parent):
         """Sets the Node's parent equal to the ID # of the parent Node
@@ -71,10 +91,8 @@ class Node():
         Return Format: 
         id
         lat lon
-        nodeID-1 nodeID-2 ...
-        Street(s):
-            Street-1
-            Street-2
+        nodeId1 nodeId2 nodeId3
+        "street1 ave" "street2 boulevard" "street3 drive"
 
         :param self: This.
         """
@@ -87,6 +105,28 @@ class Node():
             result += '\"' + street + '\" '
         result += '\n'
         return result
+    
+    def getInfoReadable(self):        
+        """WITHOUT THE QUOTES. I'd do this better, but I need fast.
+        
+        Return Format: 
+        id
+        lat lon
+        nodeID-1 nodeID-2 ...
+        Street(s):
+            Street-1
+            Street-2
+
+        :param self: This.
+        """
+        result = self.id
+        result += self.latitude + ' ' + self.longitude
+        for node in self.adjacent:
+            result += node + ' '
+        result += ''
+        for street in self.streets:
+            result += '\t' + street + '\n'
+        return result
 
     def printNode(self):
         """This will print the Node's data in a pretty way.
@@ -94,3 +134,21 @@ class Node():
         :param self: This.
         """   
         print(self.getInfo())
+
+    def matchIntersection(self, first, second):
+        """Try to match these two streets to the streets of this node.
+        
+        :param self: This.
+        :param first: First street name.
+        :param second: Second street name.
+        """   
+        reg1 = re.compile(first, re.IGNORECASE)
+        reg2 = re.compile(second, re.IGNORECASE)
+        t1 = 0
+        t2 = 0
+        for street in self.streets:
+            if reg1.search(street):
+                t1 += 1
+            if reg2.search(street):
+                t2 += 1
+        return t1 == 1 and t2 == 1
