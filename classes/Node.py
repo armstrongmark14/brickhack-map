@@ -71,6 +71,10 @@ class Node():
         """   
         self.parent = parent
 
+    def getAdjacent(self):
+        """Returns the list of adjacent nodes."""
+        return self.adjacent
+
     def getStreets(self):
         """Getter for all streets of this node.
         
@@ -102,7 +106,7 @@ class Node():
             result += node + ' '
         result += '\n'
         for street in self.streets:
-            result += '\"' + street + '\" '
+            result += '\"' + str(street) + '\" '
         result += '\n'
         return result
     

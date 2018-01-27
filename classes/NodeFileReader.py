@@ -35,7 +35,7 @@ class NodeFileReader():
         for line in file:
             # Node ID #
             if i % 4 == 0:
-                nodeId = line
+                nodeId = line.strip()
             
             # Node GPS Coordinates
             elif i % 4 == 1:
@@ -45,6 +45,9 @@ class NodeFileReader():
             # List of adjacent nodes
             elif i % 4 == 2:
                 nodes = line.split()
+                # Have to remove whitespace in case not findable
+                for n in nodes:
+                    n = n.strip()
 
             # Last line of the node = create node
             else:

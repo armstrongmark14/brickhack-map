@@ -34,6 +34,14 @@ class IntersectionFinder():
         # If it gets here, intersection not found.
         print('Intersection not found:')
         print(first + ' ' + second)
+    
+    def getStart(self):
+        """Return the ID of the first point searched for."""
+        return self.found[0]
+
+    def getEnd(self):
+        """Return the ID of the second point searched for."""
+        return self.found[1]
             
 
 
