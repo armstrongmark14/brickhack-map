@@ -19,7 +19,8 @@ class SearchTreeGenerator():
         :param nodes: The dictionary of nodes to search for a path.
         :param start: The start node for this search.
         :param end: The end node for this search.
-        """   self.nodes = nodes
+        """   
+        self.nodes = nodes
         self.start = start
         self.end = end
 
@@ -30,7 +31,6 @@ class SearchTreeGenerator():
         current = self.start
         q = Queue()
         q.put(current)
-        i = 0
 
         # Creating a dict to check if we have seen a node previously
         unchecked = set()
@@ -42,7 +42,6 @@ class SearchTreeGenerator():
         while not q.empty():
             # Setting our current node
             current = q.get()
-            print(i)
 
             # Looping through adjacent nodes
             for node in self.nodes[current].getAdjacent():

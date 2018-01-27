@@ -71,6 +71,10 @@ class Node():
         """   
         self.parent = parent
 
+    def getParent(self):
+        """Returns the parent of this node in the tree."""
+        return self.parent
+
     def getAdjacent(self):
         """Returns the list of adjacent nodes."""
         return self.adjacent
@@ -88,6 +92,10 @@ class Node():
             :param self: This.
         """
         return self.id
+
+    def getCoordinates(self):
+        """Returns the GPS coordinates of this node nicely formatted for mapping"""
+        return self.latitude + ', ' + self.longitude + '\n'
 
     def getInfo(self):        
         """Provide the node's contents in a string format.

@@ -5,17 +5,20 @@ Then you can find an intersection and trace a path from point
 to point using the nodes.
 """
 
-from classes import NodeFileReader as NFR
-from classes import IntersectionFinder as IF
+from classes import NodeFileReader
+from classes import IntersectionFinder
 from classes import SearchTreeGenerator as ST
+from classes import TreeTraverser
+
+mapFile = 'san_diego'
 
 # Getting the nodes from the node file
-nodeReader = NFR.NodeFileReader('san_diego.txt')
+nodeReader = NodeFileReader.NodeFileReader(mapFile + '.txt')
 nodeReader.read()
 
 # Searching for the user's intersetions.
 # These will error out if an intersection isn't found.
-inter = IF.IntersectionFinder()
+inter = IntersectionFinder.IntersectionFinder()
 inter.find(nodeReader.getNodes(), 'merida court', 'castejon')
 inter.find(nodeReader.getNodes(), 'playa', 'yosemite')
 
@@ -25,4 +28,5 @@ searchTree = ST.SearchTreeGenerator(nodeReader.getNodes(), inter.getStart(), int
 searchTree.search()
 
 # Search found a path, so time to traverse it and produce an output path
-
+tt = TreeTraverser.TreeTraverser(nodeReader.getNodes(), inter.getEnd(), mapFile)
+tt.traverse()
