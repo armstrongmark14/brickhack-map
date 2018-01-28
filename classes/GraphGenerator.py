@@ -8,6 +8,7 @@ that are easier to use in the path finding functions.
 
 import xml.etree.ElementTree as ET
 from classes import Node
+import io
 
 class GraphGen():
     """This class will provide helper functions to generate the graph
@@ -56,7 +57,7 @@ class GraphGen():
             highway = child.find('.//tag[@k="highway"]')
             # Checking if we have a 'way' tag && it is a 'highway' (road) && it has a street name
             if child.tag == 'way' and highway != None and highway.get('v') != 'footway' and street != None:
-                self.connectWay(child, street.get('v'))
+                self.connectWay(child, street.get('v').encode('ascii', 'ignore'))
     
 
     
