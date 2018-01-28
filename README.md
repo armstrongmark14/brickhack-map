@@ -11,8 +11,6 @@ it takes so long due to the large file sizes. I also included the code to run
 it directly from the .osm files if you comment out the 2 lines and uncomment 3
 lines in driver.py that I identify with comments.
 
-There's also two search methods, shortest path (default) and fewest nodes.
-
 Note if you choose to do that: It runs significantly faster working from my
 node files than straight OSM data. So ideally you use make_graph.py once to
 make the graph file and then each successive run is significantly faster than
