@@ -4,12 +4,14 @@ Welcome to my Open Street Map routing program developed in under 24 hours at Bri
 at RIT.
 
 In short, it asks for 4 street names that form 2 intersections then parses Open Street Map data (.osm),
-generates a graph of nodes, and finally finds a path between your two intersection nodes.
+generates a graph of nodes, and finally finds the shortest path between your two intersection nodes.
 
 I made the graph generation from the .osm files a separate program because
-it takes so long due to the file sizes. I also included the code to run
+it takes so long due to the large file sizes. I also included the code to run
 it directly from the .osm files if you comment out the 2 lines and uncomment 3
 lines in driver.py that I identify with comments.
+
+There's also two search methods, shortest path (default) and fewest nodes.
 
 Note if you choose to do that: It runs significantly faster working from my
 node files than straight OSM data. So ideally you use make_graph.py once to
@@ -62,15 +64,12 @@ entire xml file into memory. These road maps can be huge xml files. The .osm fil
 is ~300MB and takes awhile but runs, San Francisco was ~1.4GB and my computer completely locked up, 
 so utilizing (or writing my own) xml parser that only loads one node at a time would be a huge performance increase.
 
-2. Include edge lengths and use Dijkstra's algorithm to find the shortest path instead of my 
-Breadth First Search implementation that only finds the path with the fewest nodes.
-
-3. Include highways. The OSM files I looked through have highways 
+2. Include highways. The OSM files I looked through have highways 
 formatted differently from normal streets so that the highway format overlaps with some other structures.
 
-4. Utilize an actual method for storing the graph. Something better
+3. Utilize an actual method for storing the graph. Something better
 than a simple text file.
 
-5. Implement the path finding in C++ for faster performance on large
+4. Implement the path finding in C++ for faster performance on large
 graphs.
 

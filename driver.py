@@ -53,8 +53,12 @@ inter.find(nodeReader.getNodes(), uih.getStreet(2), uih.getStreet(3))
 
 # Pass the nodes along with start and end points to the search tree generator
 searchTree = ST.SearchTreeGenerator(nodeReader.getNodes(), inter.getStart(), inter.getEnd())
+
 # If search doesn't find a path it will exit the program
-searchTree.search()
+# This one searches for the path with the fewest nodes -> BFS
+# searchTree.searchFewestNodes()
+# This one searches for the path with the shortest point-point distance -> Dijkstra's
+searchTree.searchShortestPath()
 
 # Search found a path, so time to traverse it and produce an output path
 tt = TreeTraverser.TreeTraverser(nodeReader.getNodes(), inter.getEnd(), uih.getMap())

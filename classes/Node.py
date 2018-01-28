@@ -86,6 +86,10 @@ class Node():
         """Returns the ID # of this node."""
         return self.id
 
+    def getGPSCoordinates(self):
+        """Returns the list of GPS coordinates"""
+        return [float(self.latitude), float(self.longitude)]
+
     def getCoordinates(self):
         """Returns the GPS coordinates of this node nicely formatted for mapping"""
         return self.latitude + ', ' + self.longitude + '\n'
