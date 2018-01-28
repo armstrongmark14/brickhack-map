@@ -18,6 +18,7 @@ generating the graph.
 
 Observed straight from .osm file vs. my graph file on San Diego (~300MB file)
 is:
+
 | From map.osm File | From Graph.txt |
 ------------------- | -------------- |
 | ~30 seconds       | ~3 seconds     |
