@@ -1,4 +1,4 @@
-# Brickhack 4 (2018) Project: Open Street Map Routing 
+# Brickhack 4 @ RIT (2018) Project: Open Street Map Routing 
 
 Welcome to my Open Street Map routing program developed in under 24 hours at Brickhack 4 (2018)
 at RIT.
