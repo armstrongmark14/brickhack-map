@@ -6,7 +6,6 @@ Each node will have:
     Street Names
     Adjacent Nodes
     Parent Node ID # for search tree
-
 """
 
 import re
@@ -17,10 +16,10 @@ class Node():
     def __init__(self, idNum, latitude, longitude):
         """The basic constructor for the Node. Adds ID, Lat, Long.
 
-            :param self: This.
-            :param idNum: The ID # of this node.
-            :param latitude: The latitude of this node.
-            :param longitude: The longitude of this node
+        :param self: This.
+        :param idNum: The ID # of this node.
+        :param latitude: The latitude of this node.
+        :param longitude: The longitude of this node
         """
         self.id = idNum
         self.latitude = latitude
@@ -58,8 +57,8 @@ class Node():
     def setStreets(self, streets):
         """Setting a list of streets to be this nodes list of streets.
         
-            :param self: This. 
-            :param streets: List of streets that we're setting as this nodes streets.
+        :param self: This. 
+        :param streets: List of streets that we're setting as this nodes streets.
         """   
         self.streets = streets
 
@@ -80,17 +79,11 @@ class Node():
         return self.adjacent
 
     def getStreets(self):
-        """Getter for all streets of this node.
-        
-        :param self: This. 
-        """
+        """Getter for all streets of this node."""
         return self.streets
 
     def getId(self):
-        """Returns the ID # of this node
-        
-            :param self: This.
-        """
+        """Returns the ID # of this node."""
         return self.id
 
     def getCoordinates(self):
