@@ -35,10 +35,13 @@ class TreeTraverser():
         """
         file = open('output/' + self.filename + '.txt', 'w')
         current = self.start
+        i = 0
         while current != None:
             file.write(self.nodes[current].getCoordinates())
             current = self.nodes[current].getParent()
+            i += 1
 
         file.close()
+        print('Number of nodes in path: %d' % (i))
         
     

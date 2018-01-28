@@ -117,28 +117,6 @@ class Node():
             result += '\"' + str(street) + '\" '
         result += '\n'
         return result
-    
-    def getInfoReadable(self):        
-        """WITHOUT THE QUOTES. I'd do this better, but I need fast.
-        
-        Return Format: 
-        id
-        lat lon
-        nodeID-1 nodeID-2 ...
-        Street(s):
-            Street-1
-            Street-2
-
-        :param self: This.
-        """
-        result = self.id
-        result += self.latitude + ' ' + self.longitude
-        for node in self.adjacent:
-            result += node + ' '
-        result += ''
-        for street in self.streets:
-            result += '\t' + street + '\n'
-        return result
 
     def printNode(self):
         """This will print the Node's data in a pretty way.
@@ -163,4 +141,4 @@ class Node():
                 t1 += 1
             if reg2.search(street):
                 t2 += 1
-        return t1 == 1 and t2 == 1
+        return t1 >= 1 and t2 >= 1

@@ -53,8 +53,9 @@ class GraphGen():
 
             # Making the street name a variable so we can use it twice
             street = child.find('.//tag[@k="name"]')
+            highway = child.find('.//tag[@k="highway"]')
             # Checking if we have a 'way' tag && it is a 'highway' (road) && it has a street name
-            if child.tag == 'way' and child.find('.//tag[@k="highway"]') != None and street != None:
+            if child.tag == 'way' and highway != None and highway.get('v') != 'footway' and street != None:
                 self.connectWay(child, street.get('v'))
     
 
@@ -102,3 +103,7 @@ class GraphGen():
         """   
         self.nodes[node1].addAdjacent(node2)
         self.nodes[node2].addAdjacent(node1)
+
+    def getNodes(self):
+        """Returns the nodes if you want to go straight from .osm to path"""
+        return self.nodes
