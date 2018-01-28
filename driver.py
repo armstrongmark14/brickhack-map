@@ -23,9 +23,6 @@ uih.streetPrompt()
 uih.streetPrompt()
 uih.streetPrompt()
 
-# beagle ashford
-# malcolm cartagena
-
 # Starting the timer to time program execution
 uih.startTimer()
 

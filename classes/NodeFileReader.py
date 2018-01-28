@@ -57,6 +57,9 @@ class NodeFileReader():
                 streets = line.split('\"')
                 streets.pop(0)
                 streets.pop(len(streets) - 1)
+                # Removing " " strings from the results
+                while len(streets) % 2 == 1:
+                    streets.pop(len(streets) - 2)
                 self.nodes[nodeId].setStreets(streets)
 
             # Increment the line counter
