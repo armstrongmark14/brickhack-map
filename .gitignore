@@ -1,3 +1,11 @@
+# Ignore
 maps/*
 graphs/*
+output/*
 classes/__pycache__/*
+
+# Allow
+!maps/rit.osm
+!graphs/rit.txt
+!output/rit.txt
+
