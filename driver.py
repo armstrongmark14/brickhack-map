@@ -38,11 +38,13 @@ uih.startTimer()
 # that you only have to perform the slowest operation once.
 #
 # To do that, uncomment these three lines and comment 
-# out the lower two nodeReader lines from classes import GraphGen
-# nodeReader = GraphGen.GraphGen(uih.getMap())
+# out the lower two nodeReader lines 
+#
+# from classes import GraphGen
+# nodeReader = GraphGenerator.GraphGen(uih.getMap())
 # nodeReader.createGraph()
 
-# Getting the nodes from the node file
+# Getting the nodes from the node file (Comment the two below if running from .osm)
 nodeReader = NodeFileReader.NodeFileReader(uih.getMap() + '.txt')
 nodeReader.read()
 

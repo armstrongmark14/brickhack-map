@@ -1,10 +1,10 @@
-# Mark's Open Street Map Routing
+# Brickhack 4 (2018) Project: Open Street Map Routing 
 
-Welcome to my Open Street Map routing program developed at Brickhack 4 (2018)
+Welcome to my Open Street Map routing program developed in under 24 hours at Brickhack 4 (2018)
 at RIT.
 
-In short, it parses Open Street Map data (.osm), generates a graph of street
-nodes, then finds a path between your two intersection nodes.
+In short, it asks for 4 street names that form 2 intersections then parses Open Street Map data (.osm),
+generates a graph of nodes, and finally finds a path between your two intersection nodes.
 
 I made the graph generation from the .osm files a separate program because
 it takes so long due to the file sizes. I also included the code to run
@@ -14,12 +14,12 @@ lines in driver.py that I identify with comments.
 Note if you choose to do that: It runs significantly faster working from my
 node files than straight OSM data. So ideally you use make_graph.py once to
 make the graph file and then each successive run is significantly faster than
-generating the graph. 
+generating the graph.
 
 Observed straight from .osm file vs. my graph file on San Diego (~300MB file)
 is:
 
-| From map.osm File | From Graph.txt |
+| From map.osm File | From graph.txt |
 ------------------- | -------------- |
 | ~30 seconds       | ~3 seconds     |
 
@@ -39,40 +39,38 @@ where filename is the name you typed after running make_graph.py.
 5. Navigate to the program's root directory and run driver.py.
 
     1. Enter the same filename you used above.
-    2. Enter the first street of the first intersection inside your map area and hit enter.
-    3. Enter the second street of the first intersection you chose inside your map area and hit enter.
-    4. Enter the first street of the second intersection inside your map area and hit enter.
-    5. Enter the second street of the second intersection you chose inside your map area and hit enter.
+    2. Enter the *first street* of the *first intersection* you chose from inside your map area and hit enter.
+    3. Enter the *second street* of the *first intersection* you chose from inside your map area and hit enter.
+    4. Enter the *first street* of the *second intersection* you chose from inside your map area and hit enter.
+    5. Enter the *second street* of the *second intersection* you chose from inside your map area and hit enter.
 
-6. If program errors, retry the steps or redownload a new map file. Note: I got a file one time
-that had a unicode character my program couldn't parse.
+6. If the program errors, retry the steps or redownload a new map file. Note: I got a file once
+that had a unicode character my program couldn't parse. I would work on that bug if this was a longer project.
 
-7. If program executes successfully, look inside the output/ folder for a file called filename.txt
+7. If the program executes successfully, look inside the output/ folder for a file called filename.txt
 where filename is the same file from steps 3 and 5.1
 
-8. Copy the entire contents of that file, which is lines of comma separated GPS coordinates.
+8. Copy the entire contents of that file, which consists of comma separated latitude and longitude GPS coordinates.
 
 9. Paste the coordinates into the left-hand side of this site https://www.darrinward.com/lat-long/
 to view the path my program generated between your intersections overlaid on Google Maps.
 
-## Improvements if this was a larger project
+## Improvements I would make if this was a larger project
 
-1. I would find an xml parsing import, or write my own, that doesn't load the 
-entire xml file into memory. These road maps can be huge xml files. San Diego
-is one I tested with and is ~300MB, so utilizing (or writing my own) xml parser 
-that only loads one node at a time would be a huge performance increase.
+1. Fnd an xml parsing import, or write my own, that doesn't load the 
+entire xml file into memory. These road maps can be huge xml files. The .osm file for San Diego
+is ~300MB and takes awhile but runs, San Francisco was ~1.4GB and my computer completely locked up, 
+so utilizing (or writing my own) xml parser that only loads one node at a time would be a huge performance increase.
 
-2. I would include edge lengths and use Dijkstra's algorithm to find the
-actual shortest path instead of my Breadth First Search implementation that
-only finds the path with the fewest nodes.
+2. Include edge lengths and use Dijkstra's algorithm to find the shortest path instead of my 
+Breadth First Search implementation that only finds the path with the fewest nodes.
 
-3. I would include highways. The OSM files I looked through have highways 
-formatted differently from normal streets. If this was a larger project or I 
-spent more time I would include highways.
+3. Include highways. The OSM files I looked through have highways 
+formatted differently from normal streets so that the highway format overlaps with some other structures.
 
-4. I would utilize an actual method of storing the graph. Something better
+4. Utilize an actual method for storing the graph. Something better
 than a simple text file.
 
-5. I would implement the path finding in C++ for faster performance on large
+5. Implement the path finding in C++ for faster performance on large
 graphs.
 
