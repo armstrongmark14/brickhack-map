@@ -108,7 +108,8 @@ class SearchTreeGenerator():
         :param self: This.
         :param node1: The first node.
         :param node2: The second node.
-        """   n1 = self.nodes[node1].getGPSCoordinates()
+        """   
+        n1 = self.nodes[node1].getGPSCoordinates()
         n2 = self.nodes[node2].getGPSCoordinates()
         return math.sqrt(pow(n2[0] - n1[0], 2) + pow(n2[1] - n1[1], 2))
 
