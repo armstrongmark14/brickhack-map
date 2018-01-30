@@ -42,6 +42,6 @@ class TreeTraverser():
             i += 1
 
         file.close()
-        print('Number of nodes in path: %d' % (i))
+        print('\n\nPath found. Number of nodes in path: %d' % (i))
         
     

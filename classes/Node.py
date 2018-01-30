@@ -1,11 +1,13 @@
 """This is the basic Node class for a point on the map.
 
 Each node will have:
-    ID #
-    GPS Coordinates
-    Street Names
-    Adjacent Nodes
-    Parent Node ID # for search tree
+    id: ID # of this node
+    latitude: Latitude of this node
+    longitude: Longitude of this node
+    streets: Street names this node sits on
+    adjacent: Node ID's of adjacent nodes
+    parent: Node ID # for search tree
+    checked: Whether or not this node has been seen by the search
 """
 
 import re
@@ -27,6 +29,7 @@ class Node():
         self.adjacent = []
         self.streets = set()
         self.parent = None
+        self.checked = False
 
     def addAdjacent(self, nodeId):
         """Adds a node to the adjacency list of this node
@@ -69,6 +72,18 @@ class Node():
         :param parent: ID of the parent node.
         """   
         self.parent = parent
+
+    def setChecked(self, val):
+        """Sets whether or not the node has been checked in a search.
+
+        :param self: This.
+        :param checked: True/False whether or not node has been checked.
+        """
+        self.checked = val
+
+    def wasChecked(self):
+        """Gets the checked status of this node."""
+        return self.checked
 
     def getParent(self):
         """Returns the parent of this node in the tree."""

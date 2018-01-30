@@ -17,6 +17,7 @@ class UserInputHandler():
         self.streets = []
         self.streetPrompt
         self.startTime = 0
+        self.coordinates = []
 
     def mapPrompt(self):
         """Prints out the map prompt and stores map file input."""
@@ -57,4 +58,25 @@ class UserInputHandler():
         """Uses the start time and outputs total time elapsed."""
         print('Total Time: %f seconds.' % (time.time() - self.startTime))
 
+    def GPSCoordinatePrompt(self):
+        """Asking for a GPS coordinate pair.
 
+        Accepted input format: float, float
+        """   
+        word = 'First'
+        if len(self.coordinates) > 0:
+            word = 'Second'
+        coords = input("\nInput your GPS coodrinates. \nFormat example: 32.813629, -117.2015197\n%s pair: " % (word))
+        coords = coords.strip().split(', ')
+        for n in coords:
+            self.coordinates.append(float(n))
+
+    def getCoordinates(self):
+        """Returns the coordinates list."""
+        return self.coordinates
+
+    def compareToGoogleLink(self):
+        """This will generate a Google Maps link to compare our route to."""
+        c = self.coordinates
+        print("\nUse this link to compare to the Google Maps route:")
+        print("https://www.google.com/maps/dir/%f,%f/%f,%f/" % (c[0], c[1], c[2], c[3]))

@@ -10,12 +10,13 @@ class NodeFileReader():
     read the entire file to create a dictionary of nodes that we can use.
     """
 
-    def __init__(self, nodeFilename):
+    def __init__(self, intersectionFinder, nodeFilename):
         """Takes in a filename of a node file from the graphs/ folder.
         
         :param self: This.
         :param nodeFilename: Filename of our special node file
         """   
+        self.intersectionFinder = intersectionFinder
         self.filename = nodeFilename
         self.nodes = dict()
 
@@ -62,6 +63,10 @@ class NodeFileReader():
                     streets.pop(len(streets) - 2)
                 self.nodes[nodeId].setStreets(streets)
 
+                # Testing to see if this node is the closest to either
+                # of our start/end points
+                self.intersectionFinder.compareCoordinates(self.nodes[nodeId])
+
             # Increment the line counter
             i += 1
 
@@ -76,3 +81,4 @@ class NodeFileReader():
         :param nodeID: The node ID that we want to retrieve the node of.
         """   
         return self.nodes[nodeID]
+    
