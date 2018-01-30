@@ -56,8 +56,16 @@ class GraphGen():
             street = child.find('.//tag[@k="name"]')
             highway = child.find('.//tag[@k="highway"]')
             # Checking if we have a 'way' tag && it is a 'highway' (road) && it has a street name
-            if child.tag == 'way' and highway != None and highway.get('v') != 'footway' and street != None:
-                self.connectWay(child, street.get('v').encode('ascii', 'ignore'))
+            if child.tag == 'way' and highway != None:
+                # Else If it is a motorway_link = (On Ramp)
+                if highway.get('v') == 'motorway_link':
+                    self.connectWay(child, 'On-Ramp')
+                # # Else If it is an actual highway ->  v=motorway  && rerf="Highway Name"
+                # elif highway.get('v') == 'motorway'
+
+                # If it is a normal streey
+                elif highway.get('v') != 'footway' and street != None:
+                    self.connectWay(child, street.get('v').encode('ascii', 'ignore'))
     
 
     
